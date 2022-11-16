@@ -1,0 +1,84 @@
+@import 'colors';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: $cello;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: $hawkes-blue;
+  padding: 2rem;
+}
+
+.container {
+  padding: 2rem;
+  background-color: $selago;
+  border-radius: 20px;
+}
+
+h1 {
+  margin: 0;
+  margin-bottom: 1rem;
+  color: $cadet-blue;
+  font-weight: 600;
+}
+
+h2 {
+  color: $cadet-blue;
+  font-weight: normal;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li {
+  height: 60px;
+  background-color: $white;
+  border-radius: 20px;
+  line-height: 60px;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+
+  input {
+    display: none;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid $azure-radiance;
+    margin-right: 1rem;
+    vertical-align: middle;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: $white;
+    background: $cloud-burst;
+  }
+}
+

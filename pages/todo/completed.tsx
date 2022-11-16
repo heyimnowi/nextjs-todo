@@ -1,8 +1,8 @@
-import styles from '../../styles/HomePage.module.css'
+import styles from '../../styles/HomePage.module.scss'
 
 export default function CompletedPage() {
   return (
-    <div className={styles.container}>
+    <div>
       <h1>The Completed page</h1>
     </div>
   )

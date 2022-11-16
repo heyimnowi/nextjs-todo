@@ -1,8 +1,8 @@
-import styles from '../../styles/HomePage.module.css'
+import styles from '../../styles/HomePage.module.scss'
 
 export default function PendingPage() {
   return (
-    <div className={styles.container}>
+    <div>
       <h1>The Pending page</h1>
     </div>
   )

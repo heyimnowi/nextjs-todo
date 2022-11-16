@@ -1,4 +1,4 @@
-import styles from '../../styles/HomePage.module.css'
+import styles from '../../styles/HomePage.module.scss'
 import { useRouter } from 'next/router'
 
 export default function IdPage() {
@@ -7,7 +7,7 @@ export default function IdPage() {
 	console.log(router.query.id)
 
   return (
-    <div className={styles.container}>
+    <div>
       <h1>The ID page</h1>
     </div>
   )
