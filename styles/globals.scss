@@ -14,83 +14,39 @@ body {
 }
 
 .container {
-  padding: 50px;
   background-color: $selago;
   border-radius: 50px;
+  padding: 50px;
   position: relative;
 }
 
 h1 {
-  margin: 0;
-  margin-bottom: 1rem;
   color: $cadet-blue;
   font-weight: 600;
+  margin-bottom: 1rem;
+  margin: 0;
 }
 
 h2 {
   color: $cadet-blue;
-  font-weight: normal;
   font-size: 12px;
+  font-weight: normal;
   text-transform: uppercase;
 }
 
 ul {
-  padding: 0;
-  margin: 0;
   list-style: none;
-}
-
-li {
-  height: 60px;
-  background-color: $white;
-  border-radius: 20px;
-  line-height: 60px;
-  margin: 0.5rem 0;
-  padding: 0 1rem;
-  color: $fiord;
-
-  input {
-    display: none;
-  }
-
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid $amethyst;
-    margin-right: 1rem;
-    vertical-align: middle;
-  }
-
-  &.completed::before {
-    background-color: $amethyst;
-  }
-
-  &.completed {
-    text-decoration: line-through;
-  }
-}
-
-button {
-  height: 60px;
-  width: 60px;
-  background-color: $azure-radiance;
-  outline: none;
-  border: none;
-  color: $white;
-  border-radius: 50%;
-  position: absolute;
-  right: 30px;
-  bottom: 30px;
-  font-size: 1.5rem;
-  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
 
 * {

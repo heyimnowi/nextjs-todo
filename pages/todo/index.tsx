@@ -1,8 +1,10 @@
-import Link from 'next/link'
-import styles from '../../styles/HomePage.module.scss'
+import { TodoItem } from '../../models/todoItem'
+import CategoryCardList from '../../components/CategoryCardList'
+import styles from './Index.module.scss'
+import TodoListItem from '../../components/TodoListItem'
 
 export default function TodoPage() {
-  const todos = [
+  const todos: TodoItem[]  = [
     { id: 1, title: 'Todo 1', completed: false, category: 'work'}, 
     { id: 2, title: 'Todo 2', completed: true, category: 'personal' },
     { id: 3, title: 'Todo 3', completed: true, category: 'work' },
@@ -13,33 +15,16 @@ export default function TodoPage() {
   
   return (
     <div className='container'>
-      <h1>What's up, Nowi!</h1>
+      <h1>What&lsquo;s up, Nowi!</h1>
       <h2>Categories</h2>
-      <div className={styles.categories}>
-        <div className={styles.category}>
-          <p className={styles.title}>40 tasks</p>
-          <p className={styles.subtitle}>Business</p>
-          <p className={styles.progressBar}></p>
-        </div>
-        <div className={styles.category}>
-          <p className={styles.title}>18 tasks</p>
-          <p className={styles.subtitle}>Personal</p>
-          <p className={styles.progressBar}></p>
-        </div>
-      </div>
-      <h2>Today's tasks</h2>
+      <CategoryCardList></CategoryCardList>
+      <h2>Today&lsquo;s tasks</h2>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} className={todo.completed ? 'completed' : 'pending'} >
-            <input type={'checkbox'} />
-            <Link href={{
-              pathname: '/todo/[id]',
-              query: { id: todo.id }
-            }}>{todo.title}</Link>
-          </li>
+          <TodoListItem key={todo.id} todo={todo}></TodoListItem>
         ))}
       </ul>
-      <button>+</button>
+      <button className={styles.buttonNew}>+</button>
     </div>
   )
 }
