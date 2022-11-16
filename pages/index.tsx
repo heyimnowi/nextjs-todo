@@ -5,20 +5,7 @@ export default function HomePage() {
   return (
     <div className="container">
       <h1>The home page</h1>
-      <ul>
-        <li>
-          <Link href="/todo">Todo</Link>
-        </li>
-        <li>
-          <Link href="/todo/completed">Completed</Link>
-        </li>
-        <li>
-          <Link href="/todo/pending">Pending</Link>
-        </li>
-        <li>
-          <Link href="/todo/1">Id</Link>
-        </li>
-      </ul>
+      <p>This is a personal project to learn Next.js</p>
     </div>
   );
 }

@@ -14,9 +14,10 @@ body {
 }
 
 .container {
-  padding: 2rem;
+  padding: 50px;
   background-color: $selago;
-  border-radius: 20px;
+  border-radius: 50px;
+  position: relative;
 }
 
 h1 {
@@ -46,6 +47,7 @@ li {
   line-height: 60px;
   margin: 0.5rem 0;
   padding: 0 1rem;
+  color: $fiord;
 
   input {
     display: none;
@@ -57,10 +59,33 @@ li {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 1px solid $azure-radiance;
+    border: 2px solid $amethyst;
     margin-right: 1rem;
     vertical-align: middle;
   }
+
+  &.completed::before {
+    background-color: $amethyst;
+  }
+
+  &.completed {
+    text-decoration: line-through;
+  }
+}
+
+button {
+  height: 60px;
+  width: 60px;
+  background-color: $azure-radiance;
+  outline: none;
+  border: none;
+  color: $white;
+  border-radius: 50%;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 a {
