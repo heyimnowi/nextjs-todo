@@ -15,7 +15,18 @@ export default function TodoPage() {
     <div className='container'>
       <h1>What's up, Nowi!</h1>
       <h2>Categories</h2>
-      <p>Summary about categories</p>
+      <div className={styles.categories}>
+        <div className={styles.category}>
+          <p className={styles.title}>40 tasks</p>
+          <p className={styles.subtitle}>Business</p>
+          <p className={styles.progressBar}></p>
+        </div>
+        <div className={styles.category}>
+          <p className={styles.title}>18 tasks</p>
+          <p className={styles.subtitle}>Personal</p>
+          <p className={styles.progressBar}></p>
+        </div>
+      </div>
       <h2>Today's tasks</h2>
       <ul>
         {todos.map((todo) => (

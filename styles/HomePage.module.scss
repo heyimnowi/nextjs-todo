@@ -10,3 +10,46 @@
   align-items: center;
 }
 
+.categories {
+  display: flex;
+  flex-direction: row;
+}
+
+.category {
+  background-color: $white;
+  border-radius: 20px;
+  height: 110px;
+  width: 180px;
+  padding: 2rem 1rem 0.5rem;
+  margin-right: 1rem;
+}
+
+.title {
+  color: $cadet-blue;
+  font-weight: normal;
+  font-size: 12px;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  color: $cloud-burst;
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0 0 0.5rem;
+}
+
+.progressBar {
+  height: 3px;
+  background: $hawkes-blue;
+  width: 100%;
+  border-radius: 2px;
+
+  &:after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: $azure-radiance;
+    width: 50%;
+    border-radius: 2px;
+  }
+}
