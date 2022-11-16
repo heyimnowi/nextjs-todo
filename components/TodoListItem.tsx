@@ -4,13 +4,13 @@ import React from "react"
 import styles from './todoListItem.module.scss'
 
 const TodoListItem = (props: { todo: TodoItem }) => {
+	const { todo } = props
+	const exploreLink = `/todo/${todo.id}`
+
   return (
-		<li className={`${styles.todoListItem} ${props.todo.completed ? styles.completed : styles.pending}`}>
+		<li className={`${styles.todoListItem} ${todo.completed ? styles.completed : styles.pending}`}>
 			<input type='checkbox' />
-			<Link href={{
-				pathname: '/todo/[id]',
-				query: { id: props.todo.id }
-			}}>{props.todo.title}</Link>
+			<Link href={exploreLink}>{todo.title}</Link>
 		</li>
   )
 }

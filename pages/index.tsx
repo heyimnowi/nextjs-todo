@@ -1,11 +1,10 @@
-import styles from "../styles/HomePage.module.scss";
-import Link from "next/link";
+import { Fragment } from 'react';
 
 export default function HomePage() {
   return (
-    <div className="container">
+    <Fragment>
       <h1>The home page</h1>
       <p>This is a personal project to learn Next.js</p>
-    </div>
+    </Fragment>
   );
 }

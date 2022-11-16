@@ -1,8 +1,10 @@
+import { Fragment } from 'react';
+
 export default function NotFoundPage() {
   return (
-    <div className='container'>
+    <Fragment>
       <h1>Page not found</h1>
       <p>Sorry, we couldn&lsquo;t find the page you were looking for.</p>
-    </div>
+    </Fragment>
   )
 }

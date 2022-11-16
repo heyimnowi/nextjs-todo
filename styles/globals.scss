@@ -34,12 +34,6 @@ h2 {
   text-transform: uppercase;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -56,9 +50,10 @@ p {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+    background: $cloud-burst;
   }
+
   body {
-    color: $white;
     background: $cloud-burst;
   }
 }
