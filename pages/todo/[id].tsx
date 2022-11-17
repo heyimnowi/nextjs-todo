@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { Fragment } from 'react';
-import { getTodoItemById } from '../../dummy-data';
+import { getTodoItemById } from '../../data/dummy-data';
 
 export default function IdPage() {
 	const router = useRouter()

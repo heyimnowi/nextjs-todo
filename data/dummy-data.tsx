@@ -1,4 +1,4 @@
-import { TodoItem } from "./models/todoItem";
+import { TodoItem } from "../models/todoItem";
 
 const todos: TodoItem[] = [
 	{ id: 1, title: 'Todo 1', completed: false, category: 'work'}, 

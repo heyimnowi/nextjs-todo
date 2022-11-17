@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 
-import { getFilteredTodoItems, getTodos } from '../../dummy-data'
+import { getFilteredTodoItems, getTodos } from '../../data/dummy-data'
 import { TodoItem } from '../../models/todoItem'
 import styles from './Index.module.scss'
 import TodoList from '../../components/TodoList'
@@ -33,9 +33,8 @@ export default function TodoFilteredPage() {
   
   return (
     <Fragment>
-      <h2>{category} tasks</h2>
+      <h2>{category} filtered tasks</h2>
       <TodoList todos={todos}></TodoList>
-      <button className={styles.buttonNew}>+</button>
     </Fragment>
   )
 }

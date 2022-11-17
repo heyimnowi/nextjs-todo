@@ -1,9 +1,9 @@
-import { getTodos } from '../../dummy-data'
+import { Fragment } from 'react'
+import { getTodos } from '../../data/dummy-data'
 import { TodoItem } from '../../models/todoItem'
 import CategoryCardList from '../../components/CategoryCardList'
 import styles from './Index.module.scss'
 import TodoList from '../../components/TodoList'
-import { Fragment } from 'react'
 
 export default function TodoPage() {
   const todos: TodoItem[]  = getTodos()
