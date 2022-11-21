@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 
-import { getFilteredTodoItems, getTodos } from '../../data/dummy-data'
+import { getFilteredTodoItems } from '../../data/dummy-data'
 import { TodoItem } from '../../models/todoItem'
 import styles from './Index.module.scss'
 import TodoList from '../../components/TodoList'
@@ -25,7 +25,8 @@ export default function TodoFilteredPage() {
 		return <div>Invalid filter</div>
 	}
 		
-  const todos: TodoItem[]  = getFilteredTodoItems(category, completed === 'completed')
+  // const todos: TodoItem[]  = getFilteredTodoItems(category, completed === 'completed')
+  const todos: TodoItem[]  = []
 
 	if (!todos || todos.length === 0) {
 		return <div>No todos found</div>
