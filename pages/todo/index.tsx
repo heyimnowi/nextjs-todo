@@ -1,41 +1,12 @@
-import { Fragment, useEffect, useState } from 'react';
-import useSWR from 'swr';
-import CategoryCardList from '../../components/CategoryCardList';
-import TodoList from '../../components/TodoList';
+import { Fragment } from 'react'
+import { getAllTodos } from '../../helpers/api-utils'
+import { TodoItem } from '../../models/todoItem'
+import CategoryCardList from '../../components/CategoryCardList'
 import styles from './Index.module.scss'
-import { TodoItem } from '../../models/todoItem';
+import TodoList from '../../components/TodoList'
 
-function TodoPage(props: { todos: TodoItem[] }) {
-  const [todos, setTodos] = useState(props.todos);
-
-  const { data, error } = useSWR(
-    'https://nextjs-todo-b2ca1-default-rtdb.firebaseio.com/todos.json'
-  );
-
-  useEffect(() => {
-    if (data) {
-      const transformedTodos: TodoItem[] = [];
-
-      for (const key in data) {
-        transformedTodos.push({
-          id: Number(key),
-          title: data[key].title,
-          category: data[key].category,
-          completed: data[key].completed,
-        });
-      }
-
-      setTodos(transformedTodos);
-    }
-  }, [data]);
-
-  if (error) {
-    return <p>Failed to load.</p>;
-  }
-
-  if (!data && !todos) {
-    return <p>Loading...</p>;
-  }
+function TodoPage(props: { todos: any }) {
+  const { todos } = props;
 
   return (
     <Fragment>
@@ -50,23 +21,14 @@ function TodoPage(props: { todos: TodoItem[] }) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
-    'https://nextjs-todo-b2ca1-default-rtdb.firebaseio.com/todos.json'
-  );
-  const data = await response.json();
+  const todos = await getAllTodos()
 
-  const transformedTodos = [];
-
-  for (const key in data) {
-    transformedTodos.push({
-      id: Number(key),
-      title: data[key].title,
-      category: data[key].category,
-      completed: data[key].completed
-    });
+  return {
+    props: {
+      todos: todos,
+    },
+    revalidate: 60
   }
-
-  return { props: { todos: transformedTodos } };
 }
 
 export default TodoPage;

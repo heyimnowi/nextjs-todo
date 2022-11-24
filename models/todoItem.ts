@@ -1,6 +1,6 @@
 export interface TodoItem {
 	category: string
 	completed: boolean
-	id: number
+	id: string
 	title: string
 }
