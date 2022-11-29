@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { TodoItem } from "../../models/todoItem";
-import TodoList from "../../components/TodoList";
+import TodoList from "../../components/todo-list";
 import Head from "next/head";
 
 function FilteredTodosPage() {

@@ -1,6 +1,6 @@
 import React from "react"
-import CategoryCard from "./CategoryCard"
-import styles from './CategoryCardList.module.scss'
+import CategoryCard from "./category-card"
+import styles from './category-card-list.module.scss'
 
 const CategoryCardList = () => {
   return (

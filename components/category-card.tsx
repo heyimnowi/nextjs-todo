@@ -1,6 +1,6 @@
 import React from "react"
 import { Category } from "../models/category"
-import styles from './CategoryCard.module.scss'
+import styles from './category-card.module.scss'
 
 const CategoryCard = (props: { category: Category, total: number }) => {
   return (
