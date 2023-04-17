@@ -1,7 +1,5 @@
-@import '../styles/colors';
-
 .category {
-  background-color: $white;
+  background-color: #ffffff;
   border-radius: 20px;
   height: 110px;
   width: 180px;
@@ -10,14 +8,14 @@
 }
 
 .title {
-  color: $cadet-blue;
+  color: #a5a6c1;
   font-weight: normal;
   font-size: 12px;
   margin: 0 0 0.5rem;
 }
 
 .subtitle {
-  color: $cloud-burst;
+  color: #242f5d;
   font-weight: normal;
   font-size: 18px;
   margin: 0 0 0.5rem;
@@ -25,16 +23,16 @@
 
 .progressBar {
   height: 3px;
-  background: $hawkes-blue;
+  background: #d1ddfb;
   width: 100%;
   border-radius: 2px;
+}
 
-  &:after {
-    content: '';
-    display: block;
-    height: 3px;
-    background: $azure-radiance;
-    width: 50%;
-    border-radius: 2px;
-  }
+.progressBar:after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: #0675ff;
+  width: 50%;
+  border-radius: 2px;
 }

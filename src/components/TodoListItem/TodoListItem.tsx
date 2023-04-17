@@ -1,7 +1,7 @@
-import { TodoItem } from '../models/todoItem'
+import { TodoItem } from '../../models/todoItem'
 import Link from "next/link"
 import React from "react"
-import styles from './todoListItem.module.scss'
+import styles from './todoListItem.module.css'
 
 const TodoListItem = (props: { todo: TodoItem }) => {
 	const { todo } = props

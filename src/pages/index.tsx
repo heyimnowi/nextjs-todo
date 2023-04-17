@@ -1,9 +1,8 @@
 import { Fragment } from 'react'
-import { getAllTodos } from '../../helpers/api-utils'
-import { TodoItem } from '../../models/todoItem'
-import CategoryCardList from '../../components/category-card-list'
-import styles from './Index.module.scss'
-import TodoList from '../../components/todo-list'
+import { getAllTodos } from '../helpers/api-utils'
+import CategoryCardList from '../components/CategoryCardList/CategoryCardList';
+import TodoList from '../components/TodoList/TodoList';
+import styles from '../styles/Index.module.css'
 
 function TodoPage(props: { todos: any }) {
   const { todos } = props;

@@ -1,5 +1,3 @@
-@import '../styles/colors';
-
 .form {
 	display: flex;
 	flex-direction: column;
@@ -12,7 +10,7 @@
 }
 
 .input {
-	color: $cadet-blue;
+	color: var(--cadet-blue);
 	font-weight: normal;
 	font-size: 22px;
 	margin: 0 0 0.5rem;
@@ -21,7 +19,7 @@
 	background: none;
 
 	&::placeholder {
-		color: $cadet-blue;
+		color: var(--cadet-blue);
 		opacity: 0.5;
 	}
 
@@ -32,12 +30,12 @@
 
 .submit {
 	align-self: flex-end;
-	background-color: $azure-radiance;
+	background-color: #0675FF;
 	height: 40px;
 	outline: none;
 	border: 0;
 	border-radius: 50px;
 	padding: 0 20px;
-	color: $white;
+	color: #FFF;
 	font-size: 16px;
 }

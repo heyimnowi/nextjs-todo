@@ -1,11 +1,9 @@
-@import '../../styles/colors';
-
 .buttonNew {
-  background-color: $azure-radiance;
+  background-color: #0675FF;
   border-radius: 50%;
   border: none;
   bottom: 30px;
-  color: $white;
+  color: #FFF;
   font-size: 1.5rem;
   font-weight: 400;
   height: 60px;

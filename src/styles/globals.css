@@ -1,34 +1,32 @@
-@import 'colors';
-
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: $cello;
+  color: #22355E;
   max-width: 700px;
   margin: 0 auto;
-  background-color: $hawkes-blue;
+  background-color: #D1DDFB;
   padding: 2rem;
 }
 
 .container {
-  background-color: $selago;
+  background-color: #FAFBFE;
   border-radius: 50px;
   padding: 50px;
   position: relative;
 }
 
 h1 {
-  color: $cadet-blue;
+  color: var(--cadet-blue);
   font-weight: 600;
   margin-bottom: 1rem;
   margin: 0;
 }
 
 h2 {
-  color: $cadet-blue;
+  color: var(--cadet-blue);
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
@@ -50,11 +48,11 @@ p {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
-    background: $cloud-burst;
+    background: #242F5D;
   }
 
   body {
-    background: $cloud-burst;
+    background: #242F5D;
   }
 }
 

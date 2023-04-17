@@ -14,7 +14,7 @@ export default function IdPage(props: { selectedTodo: any; }) {
       <p>ID: {todo.id}</p>
       <p>Title: {todo.title}</p>
       <p>Category: {todo.category}</p>
-      <p>Completed: {todo.completed}</p>
+      <p>Completed: {todo.completed ? "Yes" : "No"}</p>
     </Fragment>
   );
 }
@@ -33,7 +33,6 @@ export async function getStaticProps(context: { params: { id: string; }; }) {
 
 export async function getStaticPaths() {
   const allTodos = await getAllTodos();
-  console.log(allTodos);
 
   const paths = allTodos.map(todo => ({ params: { id: todo.id } }));
 

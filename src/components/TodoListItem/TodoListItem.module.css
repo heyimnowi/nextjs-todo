@@ -1,0 +1,32 @@
+.todoListItem {
+  height: 60px;
+  background-color: #FFF;
+  border-radius: 20px;
+  line-height: 60px;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  color: #3E456A;
+}
+
+.todoListItem input {
+  display: none;
+}
+
+.todoListItem::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #C741CF;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.completed::before {
+  background-color: #C741CF;
+}

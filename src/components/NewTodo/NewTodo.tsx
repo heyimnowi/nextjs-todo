@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import classes from "./new-todo.module.scss";
+import classes from "./NewTodo.module.css";
 
 export default function NewTodo() {
 	return (
