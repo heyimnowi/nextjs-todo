@@ -24,7 +24,8 @@ const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
-  const filter = id ? { _id: new ObjectId(id) } : {};
+  const objectId = ObjectId.createFromHexString(id);
+  const filter = id ? { _id: objectId } : {};
 
   try {
     const result = await collection.find(filter).sort({ _id: -1 }).toArray();
