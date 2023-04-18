@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./todoListItem.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface TodoListItemProps {
   todo: TodoItem;
@@ -29,12 +30,12 @@ const TodoListItem: React.FC<TodoListItemProps> = ({ todo, onUpdate, onDelete })
       <label htmlFor={`todo-${todo._id}`}>{todo.text}</label>
       <div className={styles.actionButtonsWrapper}>
         <button className={styles.actionButton}>
-          <Link href={`/todo/${todo._id}`}>
-            <FontAwesomeIcon icon="pencil" />
+          <Link href={`/${todo._id}`}>
+            <FontAwesomeIcon icon={faPencil} />
           </Link>
         </button>
         <button onClick={handleDelete} className={styles.actionButton}>
-          <FontAwesomeIcon icon="trash" />
+          <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
     </li>

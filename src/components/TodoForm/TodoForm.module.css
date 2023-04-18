@@ -1,0 +1,44 @@
+.input {
+  color: #0675FF;
+  font-weight: normal;
+  font-size: 22px;
+  margin: 0 0 0.5rem;
+  font-weight: 400;
+  border: 0;
+  background: none;
+  display: flex;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: #0675FF;
+  opacity: 0.5;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancelButton, .submitButton {
+  flex: 1;
+  margin: 0 0.5rem;
+  border: 0;
+  height: 40px;
+  border-radius: 40px;
+}
+
+.cancelButton {
+  background: grey;
+  color: #fff;
+}
+
+.submitButton {
+  background: #0675FF;
+  color: #FFF;
+}

@@ -8,18 +8,15 @@ export function getAllTodos(): Promise<TodoItem[]> {
 }
 
 export function getTodoById(id: string): Promise<TodoItem> {
-	return fetch(`http://localhost:3000/api/todo?id=${id.toString()}`, {
+	return fetch(`http://localhost:3000/api/todo?id=${id}`, {
 		method: 'GET'
 	}).then(res => res.json())
 }
 
-export function addTodo(text: string, category: string) {
+export function addTodo(todo: TodoItem) {
 	return fetch('http://localhost:3000/api/todo', {
 		method: 'POST',
-		body: JSON.stringify({
-			text,
-			category
-		}),
+		body: JSON.stringify(todo),
 		headers: {
 			'Content-Type': 'application/json'
 		}

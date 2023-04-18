@@ -50,7 +50,6 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
-
   try {
     const result = await collection.insertOne({ ...todo, completed: false });
     res.status(201).json(result);
