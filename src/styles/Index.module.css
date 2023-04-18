@@ -2,14 +2,14 @@
   background-color: #0675FF;
   border-radius: 50px;
   border: none;
-  bottom: 10px;
+  top: 40px;
   color: #FFF;
   font-size: 1.5rem;
   font-weight: 400;
   height: 60px;
   outline: none;
   position: absolute;
-  right: 50px;
-  width: 90px;
+  right: 40px;
+  width: 60px;
   cursor: pointer;
 }
