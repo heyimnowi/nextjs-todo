@@ -6,10 +6,18 @@
   margin: 0.5rem 0;
   padding: 0 1rem;
   color: #3E456A;
+  position: relative;
 }
 
 .todoListItem input {
-  display: none;
+  position: absolute;
+  left: 28px;
+  height: 24px;
+  width: 24px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  opacity: 0;
 }
 
 .todoListItem::before {
@@ -23,10 +31,29 @@
   vertical-align: middle;
 }
 
-.completed {
+.todoListItem.completed {
   text-decoration: line-through;
+}
+
+.todoListItem.completed::before {
+  background-color: #C741CF;
 }
 
 .completed::before {
   background-color: #C741CF;
+}
+
+.actionButtonsWrapper {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.actionButton {
+  background: none;
+  outline: none;
+  border: none;
+  color: #0675ff;
+  cursor: pointer;
 }

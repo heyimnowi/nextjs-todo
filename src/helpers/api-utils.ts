@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { TodoItem } from "../models/todoItem";
 
 export function getAllTodos(): Promise<TodoItem[]> {
@@ -7,8 +8,7 @@ export function getAllTodos(): Promise<TodoItem[]> {
 }
 
 export function getTodoById(id: string): Promise<TodoItem> {
-	console.log('getTodoById id', id)
-	return fetch(`http://localhost:3000/api/todo?id=643d9bb2d641914ac9947385`, {
+	return fetch(`http://localhost:3000/api/todo?id=${id.toString()}`, {
 		method: 'GET'
 	}).then(res => res.json())
 }
@@ -36,8 +36,8 @@ export function updateTodo(todo: TodoItem) {
 	}).then(res => res.json())
 }
 
-export function deleteTodo(id: string) {
-	return fetch('http://localhost:3000/api/todo?id=${id}', {
+export function deleteTodo(id: ObjectId) {
+	return fetch(`http://localhost:3000/api/todo?id=${id.toString()}`, {
 		method: 'DELETE'
 	}).then(res => res.json())
 }

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { TodoItem } from "../../models/todoItem";
-import { connect } from '../../lib/db';
 import { ObjectId } from "mongodb";
+import clientPromise from "../../lib/db.js";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
@@ -21,14 +21,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id as string;
-  const client = await connect();
+  const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
   try {
     if (id) {
       const todo = await collection.findOne({ _id: new ObjectId(id) });
-      console.log('todo', todo)
       if (todo) {
         res.status(200).json(todo);
       } else {
@@ -41,13 +40,13 @@ const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error) {
     res.status(500).json({ error: 'Could not get todos' });
   } finally {
-    await client.close();
+    //await client.close();
   }
 }
 
 const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   const todo: TodoItem = req.body;
-  const client = await connect();
+  const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
@@ -58,29 +57,31 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error) {
     res.status(500).json({ error: 'Could not add todo' });
   } finally {
-    await client.close();
+    //await client.close();
   }
 }
 
 const handlePut = async (req: NextApiRequest, res: NextApiResponse) => {
   const todo: TodoItem = req.body;
-  const client = await connect();
+  const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
+  const { _id, ...todoWithoutId } = todo;
+
   try {
-    const result = await collection.updateOne({ _id: new ObjectId(todo._id) }, { $set: todo });
+    const result = await collection.updateOne({ _id: new ObjectId(_id) }, { $set: { ...todoWithoutId } });
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Could not update todo' });
   } finally {
-    await client.close();
+    //await client.close();
   }
 }
 
 const handleDelete = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id as string
-  const client = await connect();
+  const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
@@ -90,6 +91,6 @@ const handleDelete = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error) {
     res.status(500).json({ error: 'Could not delete todo' });
   } finally {
-    await client.close();
+    //await client.close();
   }
 } 

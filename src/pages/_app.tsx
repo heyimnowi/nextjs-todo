@@ -1,6 +1,11 @@
 import "../styles/globals.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faPencil, faTrash);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
