@@ -1,16 +1,19 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, MongoClientOptions } from 'mongodb';
 
-const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
+const uri = process.env.NEXT_PUBLIC_MONGODB_URI as string;
 
-// mongodb.js
-
-const options = {
+const mongoOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-}
+};
 
-let client
-let clientPromise
+const options: MongoClientOptions = {
+  ...({} as MongoClientOptions),
+  ...mongoOptions
+};
+
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
 
 if (!process.env.NEXT_PUBLIC_MONGODB_URI) {
   throw new Error('Add Mongo URI to .env.local')

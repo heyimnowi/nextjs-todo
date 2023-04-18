@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { TodoItem } from "../../models/todoItem";
 import { ObjectId } from "mongodb";
-import clientPromise from "../../lib/db.js";
+import clientPromise from "../../lib/db";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
@@ -24,18 +24,14 @@ const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await clientPromise;
   const db = client.db('todo-list');
   const collection = db.collection('todos');
+  const filter = id ? { _id: new ObjectId(id) } : {};
 
   try {
+    const result = await collection.find(filter).sort({ _id: -1 }).toArray();
     if (id) {
-      const todo = await collection.findOne({ _id: new ObjectId(id) });
-      if (todo) {
-        res.status(200).json(todo);
-      } else {
-        res.status(404).json({ error: `Todo with ID ${id} not found` });
-      }
+      res.status(200).json(result[0]);
     } else {
-      const todos = await collection.find().toArray();
-      res.status(200).json(todos);
+      res.status(200).json(result);
     }
   } catch (error) {
     res.status(500).json({ error: 'Could not get todos' });
