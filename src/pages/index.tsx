@@ -50,7 +50,7 @@ function TodoPage() {
   }, []);
 
   const handleClick = () => {
-    router.push("new");
+    router.push("create");
   };
 
   return (

@@ -56,15 +56,6 @@ const TodoForm: React.FC<TodoFormProps> = ({
         <option value="work">Work</option>
         <option value="personal">Personal</option>
       </select>
-      <div>
-        <label htmlFor="completed">Completed</label>
-
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={handleInputChange("completed")}
-        />
-      </div>
       <div className={styles.buttons}>
         <button className={styles.cancelButton} onClick={handleCancel}>
         <FontAwesomeIcon icon={faArrowLeft} />

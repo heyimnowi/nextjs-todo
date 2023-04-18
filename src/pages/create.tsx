@@ -4,8 +4,10 @@ import { TodoItem } from "../models/todoItem";
 import TodoForm from "../components/TodoForm/TodoForm";
 import { Action } from "../models/action";
 import { Category } from "../models/category";
+import { useRouter } from "next/router";
 
 export default function IdPage() {
+  const router = useRouter();
   const [todo, setTodo] = useState<TodoItem>({
     text: "",
     category: Category.WORK,
@@ -21,7 +23,8 @@ export default function IdPage() {
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     validateFields();
-    addTodo(todo);
+    await addTodo(todo);
+    router.push("/");
   };
 
   const handleInputChange = (
