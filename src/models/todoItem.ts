@@ -1,6 +1,8 @@
+import { ObjectId } from "mongodb";
+
 export interface TodoItem {
-	category: string;
-	completed: boolean;
-	_id: string;
-	text: string;
+  _id?: ObjectId;
+  text: string;
+  category: string;
+  completed: boolean;
 }

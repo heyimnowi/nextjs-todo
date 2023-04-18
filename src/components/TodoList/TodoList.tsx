@@ -9,7 +9,7 @@ const TodoList = (props: { todos: TodoItem[] }) => {
   return (
 		<ul className={styles.todoList}>
 			{todos.map((todo) => (
-				<TodoListItem key={todo.id} todo={todo}></TodoListItem>
+				<TodoListItem key={todo._id} todo={todo}></TodoListItem>
 			))}
 		</ul>
   )

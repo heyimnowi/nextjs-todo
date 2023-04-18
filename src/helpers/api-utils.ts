@@ -1,32 +1,43 @@
-export async function getAllTodos() {
-  const response = await fetch('https://nextjs-todo-b2ca1-default-rtdb.firebaseio.com/todos.json');
-  const data = await response.json();
+import { TodoItem } from "../models/todoItem";
 
-  const todos = [];
-
-  for (const key in data) {
-    todos.push({
-      id: data[key].id,
-      title: data[key].title,
-      category: data[key].category,
-      completed: data[key].completed
-    });
-  }
-
-  return todos;
+export function getAllTodos(): Promise<TodoItem[]> {
+	return fetch('http://localhost:3000/api/todo', {
+		method: 'GET'
+	}).then(res => res.json())
 }
 
-export async function getTodoById(id: string) {
-  const allTodos = await getAllTodos();
-  return allTodos.find((todo) => todo.id === id);
+export function getTodoById(id: string): Promise<TodoItem> {
+	console.log('getTodoById id', id)
+	return fetch(`http://localhost:3000/api/todo?id=643d9bb2d641914ac9947385`, {
+		method: 'GET'
+	}).then(res => res.json())
 }
 
-export async function getFilteredTodos(category: string, completed: boolean) {
-  const allTodos = await getAllTodos();
+export function addTodo(text: string, category: string) {
+	return fetch('http://localhost:3000/api/todo', {
+		method: 'POST',
+		body: JSON.stringify({
+			text,
+			category
+		}),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then(res => res.json())
+}
 
-  let filteredTodos = allTodos.filter((todo) => {
-    return todo.category === category && todo.completed === completed;
-  });
+export function updateTodo(todo: TodoItem) {
+	return fetch('http://localhost:3000/api/todo', {
+		method: 'PUT',
+		body: JSON.stringify(todo),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then(res => res.json())
+}
 
-  return filteredTodos;
+export function deleteTodo(id: string) {
+	return fetch('http://localhost:3000/api/todo?id=${id}', {
+		method: 'DELETE'
+	}).then(res => res.json())
 }

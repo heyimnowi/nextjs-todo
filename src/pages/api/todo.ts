@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { TodoItem } from "../../models/todoItem";
 import { connect } from '../../lib/db';
+import { ObjectId } from "mongodb";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
@@ -26,7 +27,8 @@ const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     if (id) {
-      const todo = await collection.findOne({ _id: id });
+      const todo = await collection.findOne({ _id: new ObjectId(id) });
+      console.log('todo', todo)
       if (todo) {
         res.status(200).json(todo);
       } else {
@@ -49,8 +51,9 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   const db = client.db('todo-list');
   const collection = db.collection('todos');
 
+
   try {
-    const result = await collection.insertOne(todo);
+    const result = await collection.insertOne({ ...todo, completed: false });
     res.status(201).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Could not add todo' });
@@ -66,7 +69,7 @@ const handlePut = async (req: NextApiRequest, res: NextApiResponse) => {
   const collection = db.collection('todos');
 
   try {
-    const result = await collection.updateOne({ _id: todo._id }, { $set: todo });
+    const result = await collection.updateOne({ _id: new ObjectId(todo._id) }, { $set: todo });
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Could not update todo' });
@@ -82,7 +85,7 @@ const handleDelete = async (req: NextApiRequest, res: NextApiResponse) => {
   const collection = db.collection('todos');
 
   try {
-    await collection.deleteOne({ _id: id });
+    await collection.deleteOne({ _id: new ObjectId(id) });
     res.status(200).json({ message: 'Todo deleted successfully' })
   } catch (error) {
     res.status(500).json({ error: 'Could not delete todo' });

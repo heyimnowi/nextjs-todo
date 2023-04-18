@@ -1,8 +1,19 @@
-import { Fragment } from "react";
-import { getAllTodos, getTodoById } from "../../helpers/api-utils";
+import { Fragment, useEffect, useState } from "react";
+import { getTodoById } from "../../helpers/api-utils";
+import { useRouter } from "next/router";
+import { TodoItem } from "../../models/todoItem";
 
-export default function IdPage(props: { selectedTodo: any; }) {
-  const todo = props.selectedTodo;
+export default function IdPage() {
+  const [todo, setTodo] = useState<TodoItem | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchTodo = async () => {
+      const todo = await getTodoById(router.query.id as string);
+      setTodo(todo);
+    };
+    fetchTodo();
+  }, [router.query]);
 
   if (!todo) {
     return <div>Todo not found</div>;
@@ -10,36 +21,11 @@ export default function IdPage(props: { selectedTodo: any; }) {
 
   return (
     <Fragment>
-      <h1>The ID page: {todo?.id}</h1>
-      <p>ID: {todo.id}</p>
-      <p>Title: {todo.title}</p>
+      <h1>The ID page: {todo._id ? todo._id.toString() : ''}</h1>
+      <p>ID: {todo._id ? todo._id.toString() : ''}</p>
+      <p>Title: {todo.text}</p>
       <p>Category: {todo.category}</p>
       <p>Completed: {todo.completed ? "Yes" : "No"}</p>
     </Fragment>
   );
-}
-
-export async function getStaticProps(context: { params: { id: string; }; }) {
-  const id = context.params.id;
-
-  const todo = await getTodoById(id);
-
-  return {
-    props: {
-      selectedTodo: todo,
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  const allTodos = await getAllTodos();
-
-  const paths = allTodos.map(todo => ({ params: { id: todo.id } }));
-
-  console.log(paths);
-
-  return {
-    paths: paths,
-    fallback: 'blocking'
-  };
 }
