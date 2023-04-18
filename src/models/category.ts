@@ -1,4 +1,4 @@
-export interface Category {
-	id: string;
-	title: string;
+export enum Category {
+	WORK = 'work',
+	PERSONAL = 'personal',
 }
