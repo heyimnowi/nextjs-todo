@@ -1,9 +1,9 @@
-import { TodoItem } from "../../models/todoItem";
-import React from "react";
-import styles from "./todoListItem.module.css";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { TodoItem } from '../../models/todoItem'
+import React from 'react'
+import styles from './todoListItem.module.css'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 interface TodoListItemProps {
   todo: TodoItem;
@@ -12,34 +12,34 @@ interface TodoListItemProps {
 }
 
 const TodoListItem: React.FC<TodoListItemProps> = ({ todo, onUpdate, onDelete }) => {
-  const handleChange = async () => {
-    onUpdate(todo);
-  };
+	const handleChange = async () => {
+		onUpdate(todo)
+	}
 
-  const handleDelete = async () => {
-    onDelete(todo);
-  };
+	const handleDelete = async () => {
+		onDelete(todo)
+	}
 
-  return (
-    <li
-      className={`${styles.todoListItem} ${
-        todo.completed ? styles.completed : styles.pending
-      }`}
-    >
-      <input type="checkbox" onChange={handleChange} checked={todo.completed} />
-      <label htmlFor={`todo-${todo._id}`}>{todo.text}</label>
-      <div className={styles.actionButtonsWrapper}>
-        <button className={styles.actionButton}>
-          <Link href={`/${todo._id}`}>
-            <FontAwesomeIcon icon={faPencil} />
-          </Link>
-        </button>
-        <button onClick={handleDelete} className={styles.actionButton}>
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-      </div>
-    </li>
-  );
-};
+	return (
+		<li
+			className={`${styles.todoListItem} ${
+				todo.completed ? styles.completed : styles.pending
+			}`}
+		>
+			<input type="checkbox" onChange={handleChange} checked={todo.completed} />
+			<label htmlFor={`todo-${todo._id}`}>{todo.text}</label>
+			<div className={styles.actionButtonsWrapper}>
+				<button className={styles.actionButton}>
+					<Link href={`/${todo._id}`}>
+						<FontAwesomeIcon icon={faPencil} />
+					</Link>
+				</button>
+				<button onClick={handleDelete} className={styles.actionButton}>
+					<FontAwesomeIcon icon={faTrash} />
+				</button>
+			</div>
+		</li>
+	)
+}
 
-export default TodoListItem;
+export default TodoListItem

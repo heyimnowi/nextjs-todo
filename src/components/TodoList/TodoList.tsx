@@ -1,5 +1,5 @@
 import { TodoItem } from '../../models/todoItem'
-import React from "react"
+import React from 'react'
 import styles from './TodoList.module.css'
 import TodoListItem from '../TodoListItem/TodoListItem'
 
@@ -10,22 +10,22 @@ interface TodoListProps {
 }
 
 const TodoList: React.FC<TodoListProps> = ({ todos, onUpdate, onDelete }) => {
-    if (todos.length === 0) {
-        return <p className={styles.todoListEmpty}>No todos found.</p>;
-    }
+	if (todos.length === 0) {
+		return <p className={styles.todoListEmpty}>No todos found.</p>
+	}
 
-    return (
-        <ul className={styles.todoList}>
-            {todos.map((todo) => (
-                <TodoListItem
-                    key={todo._id?.toString()}
-                    todo={todo}
-                    onUpdate={onUpdate}
-                    onDelete={onDelete}
-                />
-            ))}
-        </ul>
-    );
-};
+	return (
+		<ul className={styles.todoList}>
+			{todos.map((todo) => (
+				<TodoListItem
+					key={todo._id?.toString()}
+					todo={todo}
+					onUpdate={onUpdate}
+					onDelete={onDelete}
+				/>
+			))}
+		</ul>
+	)
+}
 
-export default TodoList;
+export default TodoList

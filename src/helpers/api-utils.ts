@@ -1,5 +1,5 @@
-import { ObjectId } from "mongodb";
-import { TodoItem } from "../models/todoItem";
+import { ObjectId } from 'mongodb'
+import { TodoItem } from '../models/todoItem'
 
 export function getAllTodos(): Promise<TodoItem[]> {
 	return fetch('http://localhost:3000/api/todo', {
