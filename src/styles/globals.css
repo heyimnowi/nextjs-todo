@@ -11,25 +11,15 @@ body {
   padding: 2rem;
 }
 
-.container {
-  background-color: #FAFBFE;
-  border-radius: 50px;
-  padding: 50px;
-  position: relative;
-}
-
 h1 {
-  color: var(--cadet-blue);
   font-weight: 600;
   margin-bottom: 1rem;
   margin: 0;
 }
 
 h2 {
-  color: var(--cadet-blue);
   font-size: 12px;
   font-weight: normal;
-  text-transform: uppercase;
 }
 
 a {

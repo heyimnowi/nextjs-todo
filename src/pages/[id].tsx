@@ -1,20 +1,40 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getTodoById, updateTodo } from "../helpers/api-utils";
 import { useRouter } from "next/router";
 import { TodoItem } from "../models/todoItem";
 import TodoForm from "../components/TodoForm/TodoForm";
 import { Action } from "../models/action";
+import NotificationContext, { NotificationStatus } from "../store/notification-context";
 
 export default function IdPage() {
   const [todo, setTodo] = useState<TodoItem | null>(null);
   const router = useRouter();
+  const notificationCtx = useContext(NotificationContext);
 
-  useEffect(() => {
-    const fetchTodo = async () => {
+  const fetchTodo = async () => {
+    notificationCtx.showNotification({
+      title: "Loading... ⏲️",
+      message: "Fetching todo...",
+      status: NotificationStatus.PENDING,
+    });
+    try {
       const todo = await getTodoById(router.query.id as string);
       setTodo(todo);
-    };
+      notificationCtx.showNotification({
+        title: "Success! 😊",
+        message: "Todo fetched successfully!",
+        status: NotificationStatus.SUCCESS,
+      });
+    } catch (error) {
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
+    }
+  };
 
+  useEffect(() => {
     if (router.query.id) {
       fetchTodo();
     }

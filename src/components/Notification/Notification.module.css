@@ -1,0 +1,35 @@
+.notification {
+  position: fixed;
+  height: 40px;
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFF;
+  padding: 0.5rem 10%;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  bottom: 16px;
+  width: calc(100% - 32px);
+  left: 16px;
+  cursor: pointer;
+}
+
+.notification h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+.pending {
+  background-color: #8EC6C5;
+}
+
+.success {
+  background-color: #8FD49D;
+}
+
+.error {
+  background-color: #F79D84;
+}

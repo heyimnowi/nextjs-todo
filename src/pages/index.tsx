@@ -1,16 +1,23 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CategoryCardList from "../components/CategoryCardList/CategoryCardList";
 import TodoList from "../components/TodoList/TodoList";
 import styles from "../styles/Index.module.css";
 import { useRouter } from "next/router";
 import { deleteTodo, getAllTodos, updateTodo } from "../helpers/api-utils";
 import { TodoItem } from "../models/todoItem";
+import NotificationContext, { NotificationStatus } from "../store/notification-context";
 
 function TodoPage() {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const router = useRouter();
+  const notificationCtx = useContext(NotificationContext);
 
   const handleCompleteTodo = async (todo: TodoItem) => {
+    notificationCtx.showNotification({
+      title: "Loading... ⏲️",
+      message: "Updating todo...",
+      status: NotificationStatus.PENDING,
+    });
     try {
       await updateTodo({ ...todo, completed: !todo.completed });
       setTodos((prevTodos) => {
@@ -19,12 +26,26 @@ function TodoPage() {
         updatedTodos[todoIndex] = { ...todo, completed: !todo.completed };
         return updatedTodos;
       });
+      notificationCtx.showNotification({
+        title: "Success! 😊",
+        message: "Todo updated successfully!",
+        status: NotificationStatus.SUCCESS,
+      });
     } catch (error) {
-      console.error(error);
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
     }
   };
 
   const handleDeleteTodo = async (todo: TodoItem) => {
+    notificationCtx.showNotification({
+      title: "Loading... ⏲️",
+      message: "Deleting todo...",
+      status: NotificationStatus.PENDING,
+    });
     try {
       if (todo._id) {
         await deleteTodo(todo._id);
@@ -34,15 +55,42 @@ function TodoPage() {
           updatedTodos.splice(todoIndex, 1);
           return updatedTodos;
         });
+        notificationCtx.showNotification({
+          title: "Success! 😊",
+          message: "Todo deleted successfully!",
+          status: NotificationStatus.SUCCESS,
+        });
       }
     } catch (error) {
-      console.error(error);
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
     }
   };
 
   const fetchTodos = async () => {
-    const todos = await getAllTodos();
-    setTodos(todos);
+    notificationCtx.showNotification({
+      title: "Loading... ⏲️",
+      message: "Fetching todos...",
+      status: NotificationStatus.PENDING,
+    });
+    try {
+      const todos = await getAllTodos();
+      setTodos(todos);
+      notificationCtx.showNotification({
+        title: "Success! 😊",
+        message: "Todos fetched successfully!",
+        status: NotificationStatus.SUCCESS,
+      });
+    } catch (error) {
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
+    }
   };
 
   useEffect(() => {
@@ -54,7 +102,7 @@ function TodoPage() {
   };
 
   return (
-    <Fragment>
+    <>
       <h1>What&lsquo;s up, Nowi!</h1>
       <h2>Categories</h2>
       <CategoryCardList todos={todos}></CategoryCardList>
@@ -67,7 +115,7 @@ function TodoPage() {
       <button onClick={handleClick} className={styles.buttonNew}>
         +
       </button>
-    </Fragment>
+    </>
   );
 }
 

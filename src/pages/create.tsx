@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { addTodo } from "../helpers/api-utils";
 import { TodoItem } from "../models/todoItem";
 import TodoForm from "../components/TodoForm/TodoForm";
 import { Action } from "../models/action";
 import { Category } from "../models/category";
 import { useRouter } from "next/router";
+import NotificationContext, { NotificationStatus } from "../store/notification-context";
 
 export default function IdPage() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function IdPage() {
     category: Category.WORK,
     completed: false,
   });
+  const notificationCtx = useContext(NotificationContext);
 
   const validateFields = () => {
     if (!todo.text || !todo.category) {
@@ -21,10 +23,24 @@ export default function IdPage() {
   };
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    validateFields();
-    await addTodo(todo);
-    router.push("/");
+    notificationCtx.showNotification({
+      title: "Loading... ⏲️",
+      message: "Toggling todo...",
+      status: NotificationStatus.PENDING,
+    });
+    try {
+      event.preventDefault();
+      validateFields();
+      await addTodo(todo);
+      router.push("/");
+    }
+    catch (error) {
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
+    }
   };
 
   const handleInputChange = (
