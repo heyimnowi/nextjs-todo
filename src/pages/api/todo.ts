@@ -28,9 +28,7 @@ const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   const filter = id ? { _id: objectId } : {};
 
   try {
-    console.log(filter)
     const result = await collection.find(filter).sort({ _id: -1 }).toArray();
-    console.log(result)
     if (id) {
       res.status(200).json(result[0]);
     } else {

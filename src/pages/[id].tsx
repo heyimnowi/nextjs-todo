@@ -47,7 +47,11 @@ export default function IdPage() {
         router.push("/");
       }
     } catch (error) {
-      console.error(error);
+      notificationCtx.showNotification({
+        title: "Error! 😔",
+        message: "Something went wrong!",
+        status: NotificationStatus.ERROR,
+      });
     }
   };
 
