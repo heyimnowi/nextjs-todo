@@ -22,19 +22,19 @@ const TodoListItem: React.FC<TodoListItemProps> = ({ todo, onUpdate, onDelete })
 
 	return (
 		<li
-			className={`${styles.todoListItem} ${
+			className={`${styles['todo-list-item']} ${
 				todo.completed ? styles.completed : styles.pending
 			}`}
 		>
 			<input type="checkbox" onChange={handleChange} checked={todo.completed} />
 			<label htmlFor={`todo-${todo._id}`}>{todo.text}</label>
-			<div className={styles.actionButtonsWrapper}>
-				<button className={styles.actionButton}>
+			<div className={styles['action-buttons-wrapper']}>
+				<button className={styles['action-button']}>
 					<Link href={`/${todo._id}`}>
 						<FontAwesomeIcon icon={faPencil} />
 					</Link>
 				</button>
-				<button onClick={handleDelete} className={styles.actionButton}>
+				<button onClick={handleDelete} className={styles['action-button']}>
 					<FontAwesomeIcon icon={faTrash} />
 				</button>
 			</div>

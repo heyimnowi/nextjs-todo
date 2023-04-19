@@ -112,7 +112,7 @@ function TodoPage() {
 				onUpdate={handleCompleteTodo}
 				onDelete={handleDeleteTodo}
 			></TodoList>
-			<button onClick={handleClick} className={styles.buttonNew}>
+			<button onClick={handleClick} className={styles['button-new']}>
         +
 			</button>
 		</>

@@ -7,7 +7,7 @@
   align-items: center;
   color: #FFF;
   padding: 0.5rem 10%;
-  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -3px 6px rgb(0 0 0 / 20%);
   border-radius: 50px;
   bottom: 16px;
   width: calc(100% - 32px);

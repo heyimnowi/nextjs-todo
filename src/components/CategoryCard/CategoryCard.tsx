@@ -11,7 +11,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, amount }) => {
 		<div className={styles.category}>
 			<p className={styles.title}>{amount} tasks</p>
 			<p className={styles.subtitle}>{title}</p>
-			<p className={styles.progressBar}></p>
+			<p className={styles['progress-bar']}></p>
 		</div>
 	)
 }

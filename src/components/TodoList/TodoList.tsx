@@ -15,7 +15,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onUpdate, onDelete }) => {
 	}
 
 	return (
-		<ul className={styles.todoList}>
+		<ul className={styles['todo-list']}>
 			{todos.map((todo) => (
 				<TodoListItem
 					key={todo._id?.toString()}

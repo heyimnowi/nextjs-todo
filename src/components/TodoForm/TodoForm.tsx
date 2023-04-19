@@ -55,10 +55,10 @@ const TodoForm: React.FC<TodoFormProps> = ({
 				<option value="personal">Personal</option>
 			</select>
 			<div className={styles.buttons}>
-				<button className={styles.cancelButton} onClick={handleCancel}>
+				<button className={styles['cancel-button']} onClick={handleCancel}>
 					<FontAwesomeIcon icon={faArrowLeft} />
 				</button>
-				<button className={styles.submitButton} onClick={onSubmit}>
+				<button className={styles['submit-button']} onClick={onSubmit}>
 					{action === ActionType.UPDATE ? (
 						<FontAwesomeIcon icon={faSave} />
 					) : (

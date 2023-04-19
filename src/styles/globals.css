@@ -1,9 +1,7 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: #22355E;
   max-width: 700px;
   margin: 0 auto;
@@ -13,7 +11,6 @@ body {
 
 h1 {
   font-weight: 600;
-  margin-bottom: 1rem;
   margin: 0;
 }
 

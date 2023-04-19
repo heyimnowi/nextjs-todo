@@ -1,5 +1,5 @@
 .category {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 20px;
   height: 110px;
   width: 180px;
@@ -22,14 +22,14 @@
   text-transform: capitalize;
 }
 
-.progressBar {
+.progress-bar {
   height: 3px;
   background: #d1ddfb;
   width: 100%;
   border-radius: 2px;
 }
 
-.progressBar:after {
+.progress-bar::after {
   content: "";
   display: block;
   height: 3px;

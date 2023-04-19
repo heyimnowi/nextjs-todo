@@ -1,4 +1,4 @@
-.todoListItem {
+.todo-list-item {
   height: 60px;
   background-color: #FFF;
   border-radius: 20px;
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.todoListItem input {
+.todo-list-item input {
   position: absolute;
   left: 28px;
   height: 24px;
@@ -20,7 +20,7 @@
   opacity: 0;
 }
 
-.todoListItem::before {
+.todo-list-item::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -31,11 +31,11 @@
   vertical-align: middle;
 }
 
-.todoListItem.completed {
+.todo-list-item.completed {
   text-decoration: line-through;
 }
 
-.todoListItem.completed::before {
+.todo-list-item.completed::before {
   background-color: #C741CF;
 }
 
@@ -43,14 +43,14 @@
   background-color: #C741CF;
 }
 
-.actionButtonsWrapper {
+.action-buttons-wrapper {
   position: absolute;
   right: 16px;
   top: 50%;
   transform: translate(0, -50%);
 }
 
-.actionButton {
+.action-button {
   background: none;
   outline: none;
   border: none;
